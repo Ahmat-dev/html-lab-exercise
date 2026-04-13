@@ -165,3 +165,66 @@ fieldset {
     border-radius: 8px; /* Requirement: Border-radius 3 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Requirement: Box-shadow for depth */
 }
+
+/* =========================================
+   TASK 3: NAVIGATION & HEADER (FLEXBOX)
+   ========================================= */
+
+/* --- 1. Sticky Navigation --- */
+nav {
+    display: flex; /* Activate Flexbox */
+    justify-content: space-between; /* Site name left, links right */
+    align-items: center; /* Center items vertically */
+    position: sticky; /* Keep it at the top */
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+    background-color: var(--color-primary-light);
+    padding: var(--space-md) var(--space-lg);
+}
+
+nav ul {
+    display: flex; /* Make the list items go horizontal */
+    list-style: none;
+    flex-wrap: wrap; /* Wrap links if screen is too narrow */
+    gap: var(--space-md); /* Space between links */
+}
+
+/* --- 2. Nav Link Interactions --- */
+nav a {
+    transition: color 0.2s, background-color 0.2s; /* Smooth color change */
+    font-weight: bold;
+    color: var(--color-surface);
+}
+
+nav a:hover {
+    background-color: var(--color-accent-dark);
+    color: var(--color-primary);
+}
+
+/* Specific style for the 'active' page link */
+nav a.active {
+    border-bottom: 3px solid var(--color-accent);
+}
+
+/* --- 3. Hero Header (Two-Column Flex) --- */
+header {
+    display: flex;
+    flex-wrap: wrap; /* Column on mobile, row on desktop */
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+/* Ensures the text takes up most of the space, but image has room */
+header .header-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+header figure {
+    /* Makes the header profile image a perfect circle */
+    header img {
+        border-radius: 50%;
+    }
+    flex: 0 1 200px; /* Header image placeholder size */
+}
