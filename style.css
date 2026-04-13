@@ -1,26 +1,35 @@
 /* Import Google Fonts at the very top */
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
-/* Define the 12 Custom Properties (Variables) */
+/*
+============================================
+BREAKPOINTS
+mobile-first base: 320px and up (default)
+tablet: @media (min-width: 600px)
+desktop: @media (min-width: 1024px)
+============================================
+*/
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Define the Custom Properties (Variables) */
 :root {
-    /* 2 Primary Colours */
     --color-primary: #1a1a2e;
     --color-primary-light: #2a2a4e;
-
-    /* 2 Accent Colours */
     --color-accent: #e8d5b7;
     --color-accent-dark: #cba87a;
-
-    /* 3 Neutral Greys & Text/Surface */
     --color-text: #1a1a1a;
     --color-muted: #666666;
     --color-surface: #f5f4f0;
-
-    /* 2 Font Families */
+    --color-surface-light: #ffffff;
+    --color-surface-alt: #eae8e1;
+    --color-border: #ddd;
+    --color-border-dark: #ccc;
     --font-body: 'Lora', Georgia, serif;
     --font-heading: 'Playfair Display', serif;
-
-    /* 3 Spacing Values */
     --space-sm: 0.5rem;
     --space-md: 1.5rem;
     --space-lg: 3rem;
@@ -41,20 +50,17 @@ body {
     font-family: var(--font-body);
     color: var(--color-text);
     background-color: var(--color-surface);
-    font-size: 1.6rem; /* Equals 16px */
+    font-size: 1.6rem;
     line-height: 1.6;
 }
 
-
 /* =========================================
-   TASK 2: TYPOGRAPHY, COLOUR & BOX MODEL
+   TASK 2 & Visual Component Styles
    ========================================= */
 
-/* --- 1. Typography Scale --- */
 h1, h2, h3, h4 {
     font-family: var(--font-heading);
     color: var(--color-primary);
-    /* COMPONENT 1 COMMENT: Margin is used here to push elements AWAY from the bottom of the heading. */
     margin-bottom: var(--space-sm);
 }
 h1 { font-size: 3.2rem; line-height: 1.2; }
@@ -66,233 +72,220 @@ p {
     font-size: 1.6rem;
     line-height: 1.6;
     color: var(--color-text);
-    /* COMPONENT 2 COMMENT: Margin is used to create space OUTSIDE the paragraph, separating it from the next one. */
     margin-bottom: var(--space-md);
 }
 
-small {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    color: var(--color-muted);
-}
+small { font-size: 1.2rem; line-height: 1.5; color: var(--color-muted); }
 
 blockquote {
+    position: relative;
     font-size: 1.8rem;
     line-height: 1.6;
     color: var(--color-primary-light);
-    background-color: #eae8e1;
+    background-color: var(--color-surface-alt);
     border-left: 4px solid var(--color-accent-dark);
-    /* COMPONENT 3 COMMENT: Padding is used here to push the quote text INWARD so it doesn't touch the grey background edges. */
     padding: var(--space-md);
     margin-bottom: var(--space-lg);
-    border-radius: 4px; /* Requirement: Border-radius 1 */
+    border-radius: 4px;
 }
-
-code {
-    font-size: 1.4rem;
-    line-height: 1.5;
-    color: var(--color-primary-light);
-}
-
-caption {
-    font-size: 1.4rem;
-    line-height: 1.5;
-    color: var(--color-muted);
-    padding-bottom: var(--space-sm);
-}
-
-/* --- 2. Link States (Pseudo-classes) --- */
-a:link {
+blockquote::before {
+    content: '"';
+    font-family: var(--font-heading);
+    font-size: 6rem;
     color: var(--color-accent-dark);
-    text-decoration: none;
-}
-a:visited {
-    color: var(--color-muted);
-}
-a:hover {
-    color: var(--color-accent);
-    text-decoration: underline;
-}
-a:active {
-    color: var(--color-primary);
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    opacity: 0.3;
 }
 
-/* --- 3. Landmarks & Backgrounds --- */
-header {
-    background-color: var(--color-primary);
-    /* COMPONENT 4 COMMENT: Padding is used to keep the text safely INSIDE the dark blue background area. */
-    padding: var(--space-lg);
-}
-header h1, header p {
-    color: var(--color-surface); /* Overrides dark text so it's readable on the dark background */
-}
-
-nav {
-    background-color: var(--color-primary-light);
-    padding: var(--space-md);
-}
-nav a {
-    padding: 0.5rem 1rem;
-    border-radius: 4px; /* Requirement: Border-radius 2 */
+section h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-accent-dark);
+    margin-top: var(--space-sm);
 }
 
-main {
-    background-color: var(--color-surface);
-    padding: var(--space-lg);
-}
+code { font-size: 1.4rem; line-height: 1.5; color: var(--color-primary-light); }
+caption { font-size: 1.4rem; line-height: 1.5; color: var(--color-muted); padding-bottom: var(--space-sm); }
 
-footer {
-    background-color: var(--color-primary);
-    padding: var(--space-lg);
-    color: var(--color-surface);
-}
-footer address, footer small {
-    color: var(--color-surface);
-}
+/* Link States */
+a:link { color: var(--color-accent-dark); text-decoration: none; }
+a:visited { color: var(--color-muted); }
+a:hover { color: var(--color-accent); text-decoration: underline; }
+a:active { color: var(--color-primary); }
 
-/* --- 4. Spacing and Cards --- */
-section {
-    /* COMPONENT 5 COMMENT: Margin used to create a massive gap BETWEEN different sections on the page. */
-    margin-bottom: var(--space-lg);
-}
+/* Landmarks & Cards */
+main { background-color: var(--color-surface); padding: var(--space-lg); }
+footer { background-color: var(--color-primary); padding: var(--space-lg); color: var(--color-surface); }
+footer address, footer small { color: var(--color-surface); }
+section { margin-bottom: var(--space-lg); }
 
-/* We will apply this card style to your form fieldset to give it depth */
 fieldset {
-    background-color: #ffffff;
+    background-color: var(--color-surface-light);
     padding: var(--space-md);
     margin-bottom: var(--space-md);
-    border: 1px solid #ddd;
-    border-radius: 8px; /* Requirement: Border-radius 3 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Requirement: Box-shadow for depth */
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* =========================================
-   TASK 3: NAVIGATION & HEADER (FLEXBOX)
-   ========================================= */
-
-/* --- 1. Sticky Navigation --- */
-nav {
-    display: flex; /* Activate Flexbox */
-    justify-content: space-between; /* Site name left, links right */
-    align-items: center; /* Center items vertically */
-    position: sticky; /* Keep it at the top */
-    top: 0;
-    z-index: 1000; /* Ensure it stays above other content */
-    background-color: var(--color-primary-light);
-    padding: var(--space-md) var(--space-lg);
+/* Header Text & Image Visuals */
+header {
+    background-color: var(--color-primary);
+    padding: var(--space-lg);
 }
+header h1, header p { color: var(--color-surface); }
+header img { border-radius: 50%; }
 
-nav ul {
-    display: flex; /* Make the list items go horizontal */
-    list-style: none;
-    flex-wrap: wrap; /* Wrap links if screen is too narrow */
-    gap: var(--space-md); /* Space between links */
-}
-
-/* --- 2. Nav Link Interactions --- */
+/* Nav Link Visuals */
 nav a {
-    transition: color 0.2s, background-color 0.2s; /* Smooth color change */
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: color 0.2s, background-color 0.2s;
     font-weight: bold;
     color: var(--color-surface);
 }
-
 nav a:hover {
     background-color: var(--color-accent-dark);
     color: var(--color-primary);
+    text-decoration: none;
 }
+nav a.active { border-bottom: 3px solid var(--color-accent); }
 
-/* Specific style for the 'active' page link */
-nav a.active {
-    border-bottom: 3px solid var(--color-accent);
-}
-
-/* --- 3. Hero Header (Two-Column Flex) --- */
-header {
-    display: flex;
-    flex-wrap: wrap; /* Column on mobile, row on desktop */
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-lg);
-}
-
-/* Ensures the text takes up most of the space, but image has room */
-header .header-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-header figure {
-    /* Makes the header profile image a perfect circle */
-    header img {
-        border-radius: 50%;
-    }
-    flex: 0 1 200px; /* Header image placeholder size */
-}
-
-/* =========================================
-   TASK 4: PAGE LAYOUT WITH CSS GRID
-   ========================================= */
-
-/* --- 1. Card Grid Layout (index.html) --- */
-.page-cards {
-    display: grid;
-    /* MAGIC LINE: Creates columns automatically based on screen width */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-md); /* Requirement: gap between items */
-    margin-top: var(--space-lg);
-}
-
-/* Requirement: Make one element span 2 columns */
-.featured-card {
-    grid-column: span 2;
-    background-color: var(--color-primary-light);
-    color: var(--color-surface);
-}
-.featured-card h2 {
-    color: var(--color-surface);
-}
-
-/* Styling the individual cards */
+/* Card Visuals */
 .card {
-    background-color: #ffffff;
+    background-color: var(--color-surface-light);
     padding: var(--space-md);
-    border: 1px solid #ddd;
+    border: 1px solid var(--color-border);
     border-radius: 8px;
-
-    /* Requirement: Add transition for hover effect */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-    /* Makes the cards equal height */
     display: flex;
     flex-direction: column;
 }
-
-/* Requirement: Hover 'lift' effect */
 .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 12px rgba(0,0,0,0.1);
 }
+.featured-card { background-color: var(--color-primary-light); color: var(--color-surface); }
+.featured-card h2 { color: var(--color-surface); }
 
-/* --- 2. Sidebar Layout (about.html) --- */
-.sidebar-layout {
-    display: grid;
-    /* Requirement: 1fr for main content, exactly 280px for sidebar */
-    grid-template-columns: 1fr 280px;
-    gap: var(--space-lg);
-    align-items: start; /* Prevents sidebar from stretching all the way down */
-}
-
-/* Styling the sidebar visually */
+/* Sidebar Visuals */
 .sidebar {
-    background-color: var(--color-surface);
+    background-color: var(--color-surface-light);
     padding: var(--space-md);
-    border: 1px solid #ddd;
+    border: 1px solid var(--color-border);
     border-radius: 8px;
 }
-.sidebar ul {
-    list-style: none; /* Removes bullet points */
-    padding-left: 0;
-}
+.sidebar ul { list-style: none; padding-left: 0; }
 .sidebar li {
     margin-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-sm);
+}
+.sidebar li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* =========================================
+   TASK 6: FORM STYLING & VISUAL POLISH
+   ========================================= */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-md);
+    border: 1px solid var(--color-border-dark);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1.6rem;
+    background-color: var(--color-surface);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-accent-dark);
+    box-shadow: 0 0 0 3px var(--color-accent);
+}
+
+button[type="submit"] {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    padding: var(--space-md) var(--space-lg);
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+button[type="submit"]:hover { background-color: var(--color-primary-light); }
+button[type="submit"]:active { transform: scale(0.97); }
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--space-lg);
+}
+th, td {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    text-align: left;
+}
+th {
+    background-color: var(--color-primary-light);
+    color: var(--color-surface);
+}
+tbody tr:nth-child(even) {
+    background-color: var(--color-surface-alt);
+}
+
+/* =========================================
+   TASK 5: RESPONSIVE DESIGN (MOBILE-FIRST)
+   ========================================= */
+
+/* --- Base Styles (Mobile / 320px+) --- */
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-primary-light);
+    padding: var(--space-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+nav ul { display: flex; flex-direction: column; list-style: none; align-items: center; gap: var(--space-sm); width: 100%; }
+
+header { display: flex; flex-direction: column; text-align: center; align-items: center; gap: var(--space-md); }
+
+.page-cards { display: grid; grid-template-columns: 1fr; gap: var(--space-md); margin-top: var(--space-lg); }
+.featured-card { grid-column: auto; }
+
+.sidebar-layout { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); }
+
+/* --- Tablet Breakpoint (600px+) --- */
+@media (min-width: 600px) {
+    header { flex-direction: row; text-align: left; justify-content: space-between; }
+    .page-cards { grid-template-columns: repeat(2, 1fr); }
+    .featured-card { grid-column: span 2; }
+}
+
+/* --- Desktop Breakpoint (1024px+) --- */
+@media (min-width: 1024px) {
+    nav { flex-direction: row; justify-content: space-between; padding: var(--space-md) var(--space-lg); }
+    nav ul { flex-direction: row; width: auto; gap: var(--space-md); }
+    .page-cards { grid-template-columns: repeat(3, 1fr); }
+    .sidebar-layout { grid-template-columns: 1fr 280px; align-items: start; }
 }
