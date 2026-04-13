@@ -145,6 +145,71 @@
         <figcaption>My Modenas Pulsar NS200 during a weekend maintenance run.</figcaption>
     </figure>
     </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+
+        <form action="#" method="post" style="background-color: #f4f4f4; padding: 20px; border: 1px solid #ccc;">
+
+            <fieldset style="border: 2px solid navy; padding: 15px;">
+                <legend style="font-size: 18px; font-weight: bold; color: navy;">Get In Touch</legend>
+
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="John Doe" required maxlength="60" style="padding: 6px; font-size: 14px;"><br><br>
+
+                <label for="emailAddr">Email Address:</label>
+                <input type="email" id="emailAddr" name="emailAddr" required><br><br>
+
+                <label for="phoneNum">Phone Number:</label>
+                <input type="tel" id="phoneNum" name="phoneNum" placeholder="+60 12-345-6789"><br><br>
+
+                <label for="projectBudget">Estimated Budget (MYR):</label>
+                <input type="number" id="projectBudget" name="projectBudget" min="100" max="10000" step="100"><br><br>
+
+                <label for="targetDate">Target Completion Date:</label>
+                <input type="date" id="targetDate" name="targetDate"><br><br>
+
+                <label for="inquirySubject">Subject of Inquiry:</label>
+                <select id="inquirySubject" name="inquirySubject">
+                    <optgroup label="Software Engineering">
+                        <option value="freelance">Freelance Web Development</option>
+                        <option value="internship">Internship Opportunity</option>
+                    </optgroup>
+                    <optgroup label="Photography">
+                        <option value="photoshoot">Automotive Photoshoot</option>
+                        <option value="prints">Purchase Prints</option>
+                    </optgroup>
+                </select><br><br>
+
+                <label for="urgency">Urgency Level (1 to 10):</label>
+                <input type="range" id="urgency" name="urgency" min="1" max="10"><br><br>
+
+                <p>Preferred Contact Method:</p>
+                <input type="radio" id="contactEmail" name="contactMethod" value="email" required>
+                <label for="contactEmail">Email</label><br>
+
+                <input type="radio" id="contactPhone" name="contactMethod" value="phone">
+                <label for="contactPhone">Phone</label><br>
+
+                <input type="radio" id="contactWhatsApp" name="contactMethod" value="whatsapp">
+                <label for="contactWhatsApp">WhatsApp</label><br><br>
+
+                <p>Services Required:</p>
+                <input type="checkbox" id="serviceFrontEnd" name="services" value="frontend">
+                <label for="serviceFrontEnd">Front-End Development</label><br>
+
+                <input type="checkbox" id="serviceBackEnd" name="services" value="backend">
+                <label for="serviceBackEnd">Back-End Development</label><br>
+
+                <input type="checkbox" id="servicePhoto" name="services" value="photography">
+                <label for="servicePhoto">Photography</label><br><br>
+
+                <label for="message">Your Message:</label><br>
+                <textarea id="message" name="message" rows="5" cols="40" placeholder="Tell me about your project details..." required></textarea><br><br>
+
+                <button type="submit" style="background-color: navy; color: white; padding: 10px 20px; border: none;">Send Message</button>
+            </fieldset>
+        </form>
+    </section>
 </main>
 
 <footer>
