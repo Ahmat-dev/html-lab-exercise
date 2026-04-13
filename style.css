@@ -228,3 +228,71 @@ header figure {
     }
     flex: 0 1 200px; /* Header image placeholder size */
 }
+
+/* =========================================
+   TASK 4: PAGE LAYOUT WITH CSS GRID
+   ========================================= */
+
+/* --- 1. Card Grid Layout (index.html) --- */
+.page-cards {
+    display: grid;
+    /* MAGIC LINE: Creates columns automatically based on screen width */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md); /* Requirement: gap between items */
+    margin-top: var(--space-lg);
+}
+
+/* Requirement: Make one element span 2 columns */
+.featured-card {
+    grid-column: span 2;
+    background-color: var(--color-primary-light);
+    color: var(--color-surface);
+}
+.featured-card h2 {
+    color: var(--color-surface);
+}
+
+/* Styling the individual cards */
+.card {
+    background-color: #ffffff;
+    padding: var(--space-md);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    /* Requirement: Add transition for hover effect */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    /* Makes the cards equal height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Requirement: Hover 'lift' effect */
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+}
+
+/* --- 2. Sidebar Layout (about.html) --- */
+.sidebar-layout {
+    display: grid;
+    /* Requirement: 1fr for main content, exactly 280px for sidebar */
+    grid-template-columns: 1fr 280px;
+    gap: var(--space-lg);
+    align-items: start; /* Prevents sidebar from stretching all the way down */
+}
+
+/* Styling the sidebar visually */
+.sidebar {
+    background-color: var(--color-surface);
+    padding: var(--space-md);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+.sidebar ul {
+    list-style: none; /* Removes bullet points */
+    padding-left: 0;
+}
+.sidebar li {
+    margin-bottom: var(--space-sm);
+}
